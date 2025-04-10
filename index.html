@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <!-- ReactDOM CDN -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN (for JSX support) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Correct way to access useState from React
+        const { useState } = React;
+
+        // CounterApp component
+        function CounterApp() {
+            const [count, setCount] = useState(0);
+
+            const handleClick = (operation) => {
+                if (operation === 'increment') {
+                    setCount(count + 1);
+                } else if (operation === 'decrement') {
+                    setCount(count - 1);
+                }
+            };
+
+            return (
+                <div>
+                    <h2>count: {count}</h2>
+                    <div>
+                        <button onClick={() => handleClick("increment")}>+</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleClick('decrement')}>-</button>
+                    </div>
+                </div>
+            );
+        }
+
+        // Render the CounterApp component to the 'root' div
+        ReactDOM.render(<CounterApp />, document.getElementById('root'));
+    </script>
+ 
+</body>
+</html>
